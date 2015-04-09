@@ -66,6 +66,7 @@ h4 {
   border-radius:5px;
   border-style: solid;
   border-color: #6699FF;
+  width: 80%;
   background: rgba(128, 0, 128, 0.3);
   opacity: 0.4;
 }

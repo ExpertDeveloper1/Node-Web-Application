@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Show Marvel content here on this page</p>
+<table class='table table-hover'>
+		<tr ng-repeat='book in content'>
+			<td>
+			<div class="container searchbox-div">
+				<div>{{book.isbn}}</div>
+				<div>{{book.author}}</div>
+				<div><strong>{{book.title}}</strong></div>
+				<div>{{book.category}}</div>
+			</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

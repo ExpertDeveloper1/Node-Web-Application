@@ -1,6 +1,20 @@
-var libraryApp = angular.module('libraryApp', ['ngSanitize']);
+var libraryApp = angular.module('libraryApp', ['ngSanitize', 'ngRoute', 'ngResource']);
 
+libraryApp.config(appConfig);
 libraryApp.controller('libraryCtrl', libraryController);
+
+function appConfig($routeProvider) {
+	$routeProvider.when('/dc', {
+		templateUrl : 'dc.html',
+		controller : 'libraryCtrl'
+	}).when('/marvel', {
+		templateUrl : 'marvel.html',
+		controller : 'libraryCtrl'
+	}).when('/manga', {
+		templateUrl : 'manga.html',
+		controller : 'libraryCtrl'
+	});
+}
 
 function libraryController($scope, $http, $sce) {
 	$scope.getDC = function() {
@@ -22,11 +36,16 @@ function libraryController($scope, $http, $sce) {
 
 function generateResultListTemplate($scope, data) {
 	if (data instanceof Array) {
-		var template = '';
+		var result = [];
+
+		// var template = '';
 		data.forEach(function(book) {
-			template += '<div class="container searchbox-div"><div>' + book.isbn + '</div><div>' + book.author + '</div><div><strong>' + book.title + '</strong></div><div> ' + book.category + '</div></div>';
+			result.push(book);
+			// template += '<div class="container searchbox-div"><div>' + book.isbn + '</div><div>' + book.author + '</div><div><strong>' + book.title + '</strong></div><div> ' + book.category + '</div></div>';
 		});
-		return template;
+
+		// console.log(result);
+		return result;
 	} else {
 		return new Error(data);
 	}
