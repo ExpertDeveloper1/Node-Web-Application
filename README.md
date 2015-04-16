@@ -1,4 +1,4 @@
 # NodeJsWebApplication
-A web application that uses MongoDb, Express, Angular, and Node framework (MEAN) stack.
+A web application that uses MySQL, Express, Angular and Node.
 
-Some app
+A Library app.
