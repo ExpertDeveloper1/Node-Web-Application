@@ -1,0 +1,86 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 18px Roboto,arial,sans-serif;
+}
+#bodybg{
+/* Location of the image background="./pictures/hplibrary1.jpg"*/
+  /*background-image: url(./pictures/hplibrary1.jpg);*/
+  
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+
+}
+#button-center{
+  margin: 0 auto;
+}
+.container {
+    padding: 10px;
+    margin: 0 auto;
+}
+.login-container{
+  padding-top: 10%;
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+
+}
+.ul-search-input {
+  list-style-type: none;
+}
+.form-control {
+    border-radius: 10px;
+}
+.searchbox-div{
+  border-radius:5px;
+  border-style: solid;
+  border-color: #6699FF;
+  width: 80%;
+  background: rgba(128, 0, 128, 0.3);
+  opacity: 0.4;
+}
+.wrapper {
+    text-align: center;
+}
+.centered-form{
+    margin-top: 60px;
+}
+.panel-general{
+  margin: 0 auto;
+  padding: 30px;
+  background: rgba(128, 0, 128, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.6) 20px 20px 20px;
+}

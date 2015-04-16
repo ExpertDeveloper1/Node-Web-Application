@@ -1,0 +1,27 @@
+Basic File structure for every node project
+
+--ApplicationFolder
+	--package.json	-->required		package.json is pretty much a list of names in json format containing all the libraries
+						(we call them modules) we depend on. The application depends on them.
+	
+	--node_modules	-->required		node_modules correspond to what is listed on package.json. It has all the source files
+						of every module declared in package.json
+	
+	--(All otherfiles)			your html, javascript, css, and other files go here. They can be in any directory structure
+						as long as the references in your code are done correctly.
+
+
+
+
+
+
+
+How to create a node project
+
+1) Create a directory or anywhere in your computer (=> mkdir MyNodeProject)
+2) Inside MyNodeProject, initialize node (=> cd MyNodeProject)
+					 (=> npm init)
+3) Follow instructions on command line
+   
+   note: "npm init" command creates a "package.json" file in MyNodeProject
+   if node was successfully done
