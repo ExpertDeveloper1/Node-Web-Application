@@ -69,6 +69,14 @@ app.get('/manga', function(req, res) {
     });
 });
 
+/*************************************************ISBN search*******************************************************/
+app.get('/isbn-search', function(req, res) {
+    console.log('headers: ' + req.headers.isbn);
+    clearDbAccessor.findMatchingISBN(req.headers.isbn, function(err, result) {
+        return result ? res.send(result) : res.send(err);
+    });
+});
+
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'))
 });

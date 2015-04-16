@@ -98,7 +98,7 @@ function _findMatchingISBN(isbn, callback) {
                 var result = _und.find(dbResult, function(row) {
                 	return row.ISBN == isbn; //isbn == req.headers.isbn
                 });
-                callback(result);
+                callback(err, result);
             }
 		});
 	});
@@ -131,7 +131,6 @@ function _searchAuthor(author, callback) {
             if (booksArray.length < 1) {
             	return callback(null, 'author not found');
             }
-
             return callback(null, booksArray);
         });
     });

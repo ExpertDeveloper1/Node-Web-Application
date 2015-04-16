@@ -58,7 +58,9 @@ h4 {
  text-align: center;
 
 }
-
+.ul-search-input {
+  list-style-type: none;
+}
 .form-control {
     border-radius: 10px;
 }
