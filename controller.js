@@ -64,9 +64,7 @@ function libraryController($scope, $http, $sce) {
 		}
 	};
     $scope.findByAuthor = function(isbn) {
-        if () {
 
-        }
     };
 }
 

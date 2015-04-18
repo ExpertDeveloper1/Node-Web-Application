@@ -40,7 +40,6 @@ function _registerAndValidateUser(post, callback) {
 	delete post['Password'];
 
 	pool.getConnection(function(err, connection) {
-//		checkSQLConnection(err, connection, callback);
         if (err) {
             connection.release();
             return callback(err, null);
@@ -59,8 +58,6 @@ function _registerAndValidateUser(post, callback) {
 	            }
 
 	            connection.query('insert into userinfo set ?', post, function(err, dbResult, fields) {
-	            	//{"fieldCount":0,"affectedRows":1,"insertId":182,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
-
 	                if (err) {
 	                    return callback(err, null);
 	                } else {
@@ -69,7 +66,6 @@ function _registerAndValidateUser(post, callback) {
 	                		Pw : userPassword,
 	                		UserNo : dbResult.insertId
 	                	}
-	                	console.log('useraccountPost: ' + JSON.stringify(useraccountPost));
 	                	connection.query('insert into useraccount set ?', useraccountPost, function(err, dbResult, fields) {
 			            	connection.release();
 			            	if (err) {
@@ -91,14 +87,14 @@ function _findMatchingISBN(isbn, callback) {
             connection.release();
             return callback(err, null);
         }
-		connection.query('select ISBN, Title, Author, Category from bookinfo', function(err, dbResult) {
-			if (err) {
-                return callback(err, null);
+		connection.query('select ISBN, Title, Author, Category from bookinfo', function(queryError, dbResult) {
+			if (queryError) {
+                return callback(queryError, null);
             } else {
                 var result = _und.find(dbResult, function(row) {
                 	return row.ISBN == isbn; //isbn == req.headers.isbn
                 });
-                callback(err, result);
+                callback(null, result);
             }
 		});
 	});
@@ -111,8 +107,8 @@ function _searchAuthor(author, callback) {
             return callback(err, null);
         }
         var queryString = 'select ISBN, Author, Title, Category from bookinfo where Author like ?';
-        connection.query(queryString, '%' + author + '%', function(err, dbResult) {
-            if (err) return callback(err, null);
+        connection.query(queryString, '%' + author + '%', function(queryError, dbResult) {
+            if (queryError) return callback(queryError, null);
 
             //_.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
             var booksArray = [];
@@ -143,9 +139,9 @@ function _filterAllDC(callback) {
             return callback(err, null);
         }
         var queryString = "select ISBN, Author, Title, Category from bookinfo where Category='DC Comics'";
-        connection.query(queryString, function(err, dbResult) {
-            if (err) {
-                return callback(err, null);
+        connection.query(queryString, function(queryError, dbResult) {
+            if (queryError) {
+                return callback(queryError, null);
             } else {
             	var result = dbResult.map(function(row) {
             		return {
@@ -169,9 +165,9 @@ function _filterAllMarvel(callback) {
             return callback(err, null);
         }
         var queryString = "select ISBN, Author, Title, Category from bookinfo where Category='Marvel Comics'";
-        connection.query(queryString, function(err, dbResult) {
-            if (err) {
-                return callback(err, null);
+        connection.query(queryString, function(queryError, dbResult) {
+            if (queryError) {
+                return callback(queryError, null);
             } else {
             	var result = dbResult.map(function(row) {
             		return {
@@ -194,9 +190,9 @@ function _filterAllManga(callback) {
             return callback(err, null);
         }
         var queryString ="select ISBN, Author, Title, Category from bookinfo where Category='Manga'";
-        connection.query(queryString, function(err, dbResult) {
-            if (err) {
-                return callback(err, null);
+        connection.query(queryString, function(queryError, dbResult) {
+            if (queryError) {
+                return callback(queryError, null);
             } else {
             	var result = dbResult.map(function(row) {
             		return {
