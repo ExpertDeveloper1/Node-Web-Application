@@ -70,9 +70,8 @@ app.get('/manga', function(req, res) {
 });
 
 /*************************************************ISBN search*******************************************************/
-app.get('/isbn-search', function(req, res) {
-    console.log('headers: ' + req.headers.isbn);
-    clearDbAccessor.findMatchingISBN(req.headers.isbn, function(err, result) {
+app.get('/book/', function(req, res) {
+    clearDbAccessor.findMatchingISBN(req.query.isbn, function(err, result) {
         return result ? res.send(result) : res.send(err);
     });
 });

@@ -54,18 +54,22 @@ function libraryController($scope, $http, $sce) {
 	};
 	$scope.findByISBN = function(isbn) {
 		if (isbn != null) {
-			$http.get('http://localhost:8080/isbn-search', { headers: { isbn : isbn } }).success(function(data) {
+			$http.get('http://localhost:8080/book', {params : {isbn : isbn }}).success(function(data) {
 				console.log(data);
 				$scope.content = [data];
 			});
-			console.log('$scope.content ------- ', $scope.content);
 		} else {
 			alert('ISBN must be a number');
 		}
 	};
+
     $scope.findByAuthor = function(isbn) {
 
     };
+
+	$scope.findByBookTitle = function(isbn) {
+
+    };    
 }
 
 function generateResultListTemplate($scope, data) {
