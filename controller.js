@@ -55,8 +55,8 @@ function libraryController($scope, $http, $sce) {
 	$scope.findByISBN = function(isbn) {
 		if (isbn != null) {
 			$http.get('http://localhost:8080/book', {params : {isbn : isbn }}).success(function(data) {
-				console.log(data);
 				$scope.content = [data];
+				console.log('$scope.content: ' + JSON.stringify(data));
 			});
 		} else {
 			alert('ISBN must be a number');
