@@ -30,3 +30,4 @@ node_modules
 .DS_Store
 
 # Auto generated files in Webstorm
+.idea/
