@@ -6,17 +6,6 @@ var express = require('express'),
     clearDbAccessor = require('./ClearDBAccessor'),
     app = express();
 
-var dbconfig = {
-    connectionLimit: 100, //important
-    debug: false,
-    host: 'us-cdbr-iron-east-02.cleardb.net',
-    user: 'b17bd3ffac20b3',
-    password: 'd64c505b20f19d7',
-    database: 'heroku_a6679b0da499276'
-};
-
-var pool = mysql.createPool(dbconfig);
-
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

@@ -1,16 +1,8 @@
 var _und = require('underscore'),
 	mysql = require('mysql');
+    dbConfig = require('./dbConfig');
 
-var dbconfig = {
-    connectionLimit: 100, //important
-    debug: false,
-    host: 'us-cdbr-iron-east-02.cleardb.net',
-    user: 'b17bd3ffac20b3',
-    password: 'd64c505b20f19d7',
-    database: 'heroku_a6679b0da499276'
-};
-
-var pool = mysql.createPool(dbconfig);
+var pool = mysql.createPool(dbConfig);
 
 function _findMatchingUsernameAndPassword(username, password, callback) {
 	pool.getConnection(function(err, connection) {
